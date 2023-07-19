@@ -1,0 +1,16 @@
+html {
+  font-family: "Ysabeau Office", sans-serif;
+}
+
+.canvas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gameboard {
+  width: 600px;
+  height: 600px;
+  border: 2px solid lightgrey;
+}
