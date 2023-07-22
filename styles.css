@@ -1,5 +1,6 @@
 html {
   font-family: "Ysabeau Office", sans-serif;
+  box-sizing: border-box;
 }
 
 .canvas {
@@ -12,5 +13,13 @@ html {
 .gameboard {
   width: 600px;
   height: 600px;
-  border: 2px solid lightgrey;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.square {
+  height: 200px;
+  width: 200px;
+  border: 3px solid lightgrey;
 }
