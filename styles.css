@@ -30,7 +30,6 @@
 }
 
 .gameboard {
-  border: 2px solid green;
   width: 600px;
   height: 600px;
   display: grid;
@@ -41,6 +40,20 @@
 .square {
   height: 1fr;
   width: 1fr;
+  border: 3px solid lightgrey;
+}
+
+.markedx {
+  height: 1fr;
+  width: 1fr;
+  background-color: red;
+  border: 3px solid lightgrey;
+}
+
+.markedy {
+  height: 1fr;
+  width: 1fr;
+  background-color: blue;
   border: 3px solid lightgrey;
 }
 

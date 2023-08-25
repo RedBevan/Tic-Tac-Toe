@@ -12,6 +12,9 @@ const makeGameboard = (() => {
     });
     const squares = document.querySelectorAll(".square");
     console.log(squares);
+    squares.forEach((square) => {
+      square.addEventListener("click", Game.handleClick);
+    });
   };
 
   // Return the displayBoard method so it can be accessed outside of the object
@@ -35,11 +38,36 @@ const Game = (() => {
   const start = () => {
     makeGameboard.displayBoard();
     players = [createPlayer("Player 1", "X"), createPlayer("Player 2", "O")];
-    currentPlayerIndex = 0;
+    currentPlayerIndex = 1;
     gameOver = false;
   };
+
+  const markSquare = (clickedSquare) => {
+    if (currentPlayerIndex % 2 === 0) {
+      clickedSquare.classList.add("markedx");
+    } else {
+      clickedSquare.classList.add("markedy");
+    }
+    clickedSquare.classList.toggle("square");
+  };
+
+  const handleClick = (event) => {
+    const clickedSquare = event.target;
+
+    if (
+      clickedSquare.classList.contains("markedx") ||
+      clickedSquare.classList.contains("markedy")
+    ) {
+      alert("That square is taken, buddy!");
+    } else {
+      currentPlayerIndex = currentPlayerIndex + 1;
+      markSquare(event.target);
+    }
+  };
+
   return {
     start,
+    handleClick,
   };
 })();
 
