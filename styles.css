@@ -1,6 +1,7 @@
-html {
+:root {
   font-family: "Ysabeau Office", sans-serif;
   box-sizing: border-box;
+
 }
 
 .canvas {
@@ -22,4 +23,12 @@ html {
   height: 200px;
   width: 200px;
   border: 3px solid lightgrey;
+}
+
+.square:hover {
+  background-color: lightgrey;
+}
+
+.x-square {
+  background-image: 
 }
