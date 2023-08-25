@@ -8,7 +8,7 @@ const makeGameboard = (() => {
       let square = document.createElement("div");
       square.classList.add("square");
       gameBoard.appendChild(square);
-      square.id = i + 1;
+      square.id = i;
     });
     const squares = document.querySelectorAll(".square");
     console.log(squares);
@@ -52,16 +52,22 @@ const Game = (() => {
     clickedSquare.classList.toggle("square");
   };
 
+  // Add 1s and 2s to array. 0 = red; x = blue
+  const updateArray = (array, squareNumber) => {
+    console.log("bananas");
+    if (currentPlayerIndex % 2 === 0) {
+      array[squareNumber] = "0";
+    } else {
+      array[squareNumber] = "x";
+    }
+  };
+
   const handleClick = (event) => {
     //The code below is to change the index of the right array item to reflect the id of the clicked square.
 
-    // const clickedSquare = event.target;
-    // const squareNumber = clickedSquare.id;
-    // console.log(squareNumber);
-
-    // console.log(makeGameboard.boardArray);
-    // makeGameboard.boardArray[squareNumber] = squareNumber;
-    // console.log(makeGameboard.boardArray);
+    const clickedSquare = event.target;
+    const squareNumber = clickedSquare.id;
+    console.log(squareNumber);
 
     if (
       clickedSquare.classList.contains("markedx") ||
@@ -71,10 +77,43 @@ const Game = (() => {
     } else {
       currentPlayerIndex = currentPlayerIndex + 1;
       markSquare(event.target);
+      updateArray(makeGameboard.boardArray, squareNumber);
+      console.log(makeGameboard.boardArray);
+    }
+    console.log(makeGameboard.boardArray);
+    checkWinner(makeGameboard.boardArray);
+  };
+
+  const checkWinner = (array) => {
+    if (array[0] != "" && array[0] === array[1] && array[0] === array[2]) {
+      endGame();
+    }
+    if (array[3] != "" && array[3] === array[4] && array[3] === array[5]) {
+      endGame();
+    }
+    if (array[6] != "" && array[6] === array[7] && array[6] === array[8]) {
+      endGame();
+    }
+    if (array[0] != "" && array[0] === array[3] && array[0] === array[6]) {
+      endGame();
+    }
+    if (array[1] != "" && array[1] === array[4] && array[1] === array[7]) {
+      endGame();
+    }
+    if (array[2] != "" && array[2] === array[5] && array[2] === array[8]) {
+      endGame();
+    }
+    if (array[0] != "" && array[0] === array[4] && array[0] === array[8]) {
+      endGame();
+    }
+    if (array[2] != "" && array[2] === array[4] && array[2] === array[6]) {
+      endGame();
     }
   };
 
-  const endGame = () => {};
+  const endGame = () => {
+    alert("Game over!");
+  };
 
   return {
     start,
