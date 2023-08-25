@@ -22,6 +22,10 @@
   font-size: 22px;
 }
 
+#newGameButton:hover {
+  background-color: aquamarine;
+}
+
 .canvas {
   display: flex;
   flex-direction: column;
@@ -46,14 +50,14 @@
 .markedx {
   height: 1fr;
   width: 1fr;
-  background-color: red;
+  background-color: tomato;
   border: 3px solid lightgrey;
 }
 
 .markedy {
   height: 1fr;
   width: 1fr;
-  background-color: blue;
+  background-color: aquamarine;
   border: 3px solid lightgrey;
 }
 
