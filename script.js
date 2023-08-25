@@ -14,6 +14,7 @@ const makeGameboard = (() => {
     console.log(squares);
     squares.forEach((square) => {
       square.addEventListener("click", Game.handleClick);
+      square.classList.remove("markedx", "markedy");
     });
   };
 
@@ -38,6 +39,7 @@ const Game = (() => {
 
   const start = () => {
     makeGameboard.displayBoard();
+    makeGameboard.boardArray = ["", "", "", "", "", "", "", "", ""];
     players = [createPlayer("Player 1", "X"), createPlayer("Player 2", "O")];
     currentPlayerIndex = 1;
     gameOver = false;
@@ -68,15 +70,14 @@ const Game = (() => {
     const clickedSquare = event.target;
     const squareNumber = clickedSquare.id;
     console.log(squareNumber);
-
     if (
       clickedSquare.classList.contains("markedx") ||
       clickedSquare.classList.contains("markedy")
     ) {
       alert("That square is taken, buddy!");
     } else {
-      currentPlayerIndex = currentPlayerIndex + 1;
       markSquare(event.target);
+      currentPlayerIndex = currentPlayerIndex + 1;
       updateArray(makeGameboard.boardArray, squareNumber);
       console.log(makeGameboard.boardArray);
     }
@@ -113,6 +114,8 @@ const Game = (() => {
 
   const endGame = () => {
     alert("Game over!");
+    gameOver = true;
+    start();
   };
 
   return {
