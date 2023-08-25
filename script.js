@@ -20,6 +20,7 @@ const makeGameboard = (() => {
   // Return the displayBoard method so it can be accessed outside of the object
   return {
     displayBoard,
+    boardArray,
   };
 })();
 
@@ -52,7 +53,15 @@ const Game = (() => {
   };
 
   const handleClick = (event) => {
-    const clickedSquare = event.target;
+    //The code below is to change the index of the right array item to reflect the id of the clicked square.
+
+    // const clickedSquare = event.target;
+    // const squareNumber = clickedSquare.id;
+    // console.log(squareNumber);
+
+    // console.log(makeGameboard.boardArray);
+    // makeGameboard.boardArray[squareNumber] = squareNumber;
+    // console.log(makeGameboard.boardArray);
 
     if (
       clickedSquare.classList.contains("markedx") ||
@@ -64,6 +73,8 @@ const Game = (() => {
       markSquare(event.target);
     }
   };
+
+  const endGame = () => {};
 
   return {
     start,
