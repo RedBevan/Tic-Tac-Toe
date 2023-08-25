@@ -4,11 +4,14 @@ const makeGameboard = (() => {
   const displayBoard = () => {
     const gameBoard = document.querySelector("#gameboard");
     gameBoard.innerHTML = "";
-    boardArray.forEach((element) => {
+    boardArray.forEach((element, i) => {
       let square = document.createElement("div");
       square.classList.add("square");
       gameBoard.appendChild(square);
+      square.id = i + 1;
     });
+    const squares = document.querySelectorAll(".square");
+    console.log(squares);
   };
 
   // Return the displayBoard method so it can be accessed outside of the object
